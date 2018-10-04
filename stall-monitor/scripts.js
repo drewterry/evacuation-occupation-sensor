@@ -6,7 +6,7 @@ function setBathroomStatus(locked) {
 };
 
 function log(msg) {
-  document.getElementById('occupied').textContent = msg;
+  document.getElementById('log').textContent = msg;
 }
     
 // Create a client instance
@@ -35,8 +35,8 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   log(""+message.destinationName+"  ->  "+JSON.stringify(message.payloadString));
-  console.log(message);
   if (message.destinationName.startsWith("/ble/advertise/stall-monitor-mens/l")) {
+    console.log(message.destinationName, ": ", message.payloadString);
     setBathroomStatus(message.payloadString === "1");
   }
 }

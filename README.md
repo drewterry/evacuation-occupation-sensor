@@ -19,9 +19,13 @@ Navigate to `http://RASPBERRY_PI_IP:1888/bathroom` to view the bathroom status.
 ## Hardware
 
 [Espruino MDBT42Q](http://www.espruino.com/MDBT42Q)
+
 ![MDBT42Q Image](http://www.espruino.com/refimages/MDBT42Q_board.jpg)
+
 [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+
 ![RPi3](https://www.raspberrypi.org/app/uploads/2017/05/Raspberry-Pi-3-462x322.jpg)
+
 [Adafruit 500 mAh LiPo Battery](https://www.adafruit.com/product/1578)
 [Adafruit LiPo Charger](https://github.com/adafruit/Adafruit-MicroLipo-PCB)
 [Sparkfun Tilt Sensor](https://www.sparkfun.com/products/10289)
@@ -29,7 +33,7 @@ Slide Switch
 
 ## System Design
 
-![Whiteboard image of system](doc/whiteboard.png)
+![Whiteboard image of system](doc/whiteboard.jpg)
 
 ## Software
 

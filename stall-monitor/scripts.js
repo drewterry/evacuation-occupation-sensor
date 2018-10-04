@@ -2,7 +2,7 @@ const http = new XMLHttpRequest();
 const url = "http://10.1.5.135:3000/stall";
 
 function setBathroomStatus(occupied) {
-  document.getElementById('occupied').style.display = occupied ? 'inline' : 'none';
+  document.getElementById('occupied').style.display = occupied ? 'block' : 'none';
 };
 
 function log(msg) {

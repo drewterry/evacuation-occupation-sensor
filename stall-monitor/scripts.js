@@ -18,12 +18,12 @@ client = new Paho.MQTT.Client(
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
-log("MQTT Connecting...");
+// log("MQTT Connecting...");
 // connect the client
 client.connect({onSuccess:onConnect});
 // called when the client connects
 function onConnect() {
-  log("MQTT Connected");
+// log("MQTT Connected");
   client.subscribe("#"); // get everything
 }
 // called when the client loses its connection

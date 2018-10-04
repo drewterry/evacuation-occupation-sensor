@@ -1,7 +1,7 @@
 const http = new XMLHttpRequest();
 const url = "http://10.1.5.135:3000/stall";
 
-function setBathroomStatus(locked) {
+function setBathroomStatus(occupied) {
   document.getElementById('occupied').style.display = occupied ? 'inline' : 'none';
 };
 
@@ -35,7 +35,6 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   // log(""+message.destinationName+"  ->  "+JSON.stringify(message.payloadString));
-  console.log(message.destinationName, ": ", message.payloadString);
   if (message.destinationName.startsWith("/ble/advertise/stall-monitor-men/l")) {
     console.log(message.destinationName, ": ", message.payloadString);
     setBathroomStatus(message.payloadString === "1");

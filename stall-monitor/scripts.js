@@ -4,6 +4,7 @@ const url = "http://10.1.5.135:3000/stall";
 function setBathroomStatus(occupied) {
   document.getElementById('toilet').style.display = 'block';
   document.getElementById('occupied').style.display = occupied ? 'block' : 'none';
+  document.getElementById('vacant').style.display = occupied ? 'none' : 'block';
 };
 
 function log(msg) {

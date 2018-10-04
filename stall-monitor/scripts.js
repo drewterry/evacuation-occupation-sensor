@@ -36,5 +36,7 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
   log(""+message.destinationName+"  ->  "+JSON.stringify(message.payloadString));
   console.log(message);
-  // if (message.destinationName.startsWith("/ble/advertise/stall-monitor-mens/")) {
+  if (message.destinationName.startsWith("/ble/advertise/stall-monitor-mens/l")) {
+    setBathroomStatus(message.payloadString === "1");
+  }
 }

@@ -1,6 +1,3 @@
-const http = new XMLHttpRequest();
-const url = "http://10.1.5.135:3000/stall";
-
 function setBathroomStatus(occupied) {
   document.getElementById('toilet').style.display = 'block';
   document.getElementById('occupied').style.display = occupied ? 'block' : 'none';
@@ -16,7 +13,8 @@ client = new Paho.MQTT.Client(
   location.hostname,
   parseInt(location.port||80),
   location.pathname.substr(0,location.pathname.lastIndexOf("/")+1),
-   "clientId");
+  Math.random().toString(36).substring(7)
+);
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;

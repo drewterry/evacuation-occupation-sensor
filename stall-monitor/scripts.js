@@ -31,6 +31,7 @@ log("MQTT Connected");
 // called when the client loses its connection
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
+    document.getElementById('toilet').style.display = 'none';
     log("MQTT connection lost:"+responseObject.errorMessage);
   }
 }

@@ -16,7 +16,8 @@ client = new Paho.MQTT.Client(
   location.hostname||"10.1.5.121",
   parseInt(location.port||1888),
   location.pathname.substr(0,location.pathname.lastIndexOf("/")+1),
-   "clientId");
+  Math.random().toString(36).substring(7)
+);
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;

@@ -13,8 +13,8 @@ function log(msg) {
     
 // Create a client instance
 client = new Paho.MQTT.Client(
-  location.hostname,
-  parseInt(location.port||80),
+  location.hostname||"10.1.5.121",
+  parseInt(location.port||1888),
   location.pathname.substr(0,location.pathname.lastIndexOf("/")+1),
    "clientId");
 // set callback handlers
@@ -39,7 +39,7 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
   log(""+message.destinationName+"  ->  "+JSON.stringify(message.payloadString));
   if (message.destinationName.startsWith("/ble/advertise/stall-monitor-men/l")) {
-    console.log(message.destinationName, ": ", message.payloadString);
+    // console.log(message.destinationName, ": ", message.payloadString);
     setBathroomStatus(message.payloadString === "1");
   }
 }

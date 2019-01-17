@@ -1,4 +1,4 @@
-import { Split, Horizontal, Invert} from 'mdx-deck/layouts'
+import { Split, Horizontal, Invert, SplitRight} from 'mdx-deck/layouts'
 import { Head, Image, Notes, Appear } from 'mdx-deck/dist'
 import { Box, Text, Card, Flex } from 'rebass'
 
@@ -153,23 +153,23 @@ export default Invert
 
 ---
 
+## Raspberry Pi
+<br/>
+<FontAwesomeIcon icon={faRaspberryPi} size="10x" />
+
+---
+
 export default Horizontal
 
 <div>
-  <h1>Cabled</h1>
-  <img src="https://tr4.cbsistatic.com/hub/i/r/2013/08/14/c8adbfd0-a882-4c2c-b523-5c18114ee940/resize/770x/1a36f3c05ccd1e3cd7367b1dc64b54c1/cablemess.jpg" height="70%" width="70%"/>
+  <h1>Pi Zero W</h1>
+  <FontAwesomeIcon icon={faRaspberryPi} size="8x" />
 </div>
 
 <div>
   <h1>WiFi</h1>
   <FontAwesomeIcon icon={faWifi} size="8x" />
 </div>
-
-<div>
-  <h1>Raspberry Pi</h1>
-  <FontAwesomeIcon icon={faRaspberryPi} size="8x" />
-</div>
-
 
 ---
 
@@ -187,6 +187,14 @@ export default Horizontal
 
 ---
 
+# Final Product
+<br/>
+<img src="https://tr4.cbsistatic.com/hub/i/r/2013/08/14/c8adbfd0-a882-4c2c-b523-5c18114ee940/resize/770x/1a36f3c05ccd1e3cd7367b1dc64b54c1/cablemess.jpg" />
+<br/>
+<small>*Artist Rendering.  Sadly no pictures remain of this monstrosity.</small>
+
+---
+
 # Design Challenges V2
 
 <h2><FontAwesomeIcon icon={faBatteryThreeQuarters}/>   Battery Powered</h2>
@@ -194,22 +202,66 @@ export default Horizontal
 
 ---
 
-### Wifi vs. BLE
+# Wifi vs. BLE
+
+
+
+
 
 ---
 
-### MQTT
+# MQTT
+
+- Popular IoT transport protocol
+- Bi-directional Publish-Subscribe
+- Optimized for low power, small packets, reliability
+- Channels for status, battery, previous state duration
 
 ---
 
-## Raspberry Pi Overview
+### Espruino boards (Embedded JS)
+
+
+
+---
+
+export default Split
+
+# System Architecture
+
+![](doc/whiteboard.jpg)
+
+---
+
+# Client Update
+
+![](doc/client.png)
+
+---
+
+### 3D Case Modelling
+
+- Fusion 360
+- MakerBot Print
+
+---
+
+Resources
+
+<div>
+  <FontAwesomeIcon icon={faGithub} />
+  <span> </span>
+  <a href="https://github.com/drewterry/evacuation-occupation-sensor">Github Repo</a>
+</div>
+
+---
+
+## Raspberry Pi Second Look
 <br/>
 <FontAwesomeIcon icon={faRaspberryPi} size="10x" />
 
 ---
 
-## Raspberry Pi Overview
-<br/>
 <FontAwesomeIcon icon={faRaspberryPi} size="10x" spin/>
 
 ---
@@ -241,26 +293,3 @@ Other Tasks
 
 * Flashing Raspbian - resin.io
 * Installing tools
-
----
-
-### Espruino boards (Embedded JS)
-
-
-
----
-
-### 3D Case Modelling
-
-- Fusion 360
-- MakerBot Print
-
----
-
-Resources
-
-<div>
-  <FontAwesomeIcon icon={faGithub} />
-  <span> </span>
-  <a href="https://github.com/drewterry/evacuation-occupation-sensor">Github Repo</a>
-</div>

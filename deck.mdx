@@ -1,0 +1,266 @@
+import { Split, Horizontal, Invert} from 'mdx-deck/layouts'
+import { Head, Image, Notes, Appear } from 'mdx-deck/dist'
+import { Box, Text, Card, Flex } from 'rebass'
+
+export { condensed as theme } from 'mdx-deck/themes'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRaspberryPi, faNodeJs, faGithub, faSketch } from '@fortawesome/free-brands-svg-icons'
+import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+
+# Remote Sensor Monitoring and Data Distribution
+
+### or 
+
+### How to Freak Out All Your CoWorkers!
+
+---
+
+>> eng·in·eer
+
+> a person that solves problems you did not know you had
+
+---
+
+# The Problem
+
+---
+
+export default Horizontal
+
+<div>
+  <div>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+  </div>
+  <div>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+  </div>
+  <div>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+  </div>
+  <div>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+  </div>
+  <div>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+    <FontAwesomeIcon icon={faRunning} size="3x"/>
+  </div>
+</div>
+
+<FontAwesomeIcon icon={faToilet} size="10x"/>
+
+---
+
+# Design Challenges
+
+<h2><FontAwesomeIcon icon={faThermometerHalf}/>   Sensing</h2>
+<h2><FontAwesomeIcon icon={faMobileAlt}/>   Acquisition & Presentation</h2>
+
+---
+
+# Presence Sensing
+
+- Temperature - Infrared
+- Distance - Ultrasonics
+- Pressure - Switch on Seat
+- Machine Vision
+
+---
+
+... Taking a step back
+
+## Do we really need to measure PRESENCE
+## or just AVAILABILITY?
+
+---
+
+What about ...
+
+<h2>Door Position?</h2>
+
+---
+
+What about ...
+
+<s>Door Position?</s>
+<h2>Lock Position!</h2>
+
+<Appear>
+  <h2>Because who doesn't lock the door??</h2>
+</Appear>
+
+---
+
+export default Invert
+
+#### But in all seriousness, the lock is a rotating disc, which was super simple to measure with a tilt sensor
+
+<br/><br/>
+
+<Flex>
+  <img src="http://blog.vidianindhita.com/wp-content/uploads/2018/02/tilt_scheme.gif" height="50%" width="50%" />
+  <img src="https://cdn-learn.adafruit.com/assets/assets/000/000/492/original/force___flex_tiltcutaway.jpg?1396763538" height="50%" width="50%"/>
+</Flex>
+
+---
+
+# Data Acquisition and Presentation
+
+---
+
+export default Horizontal
+
+<div>
+  <h1>Cabled</h1>
+  <img src="https://tr4.cbsistatic.com/hub/i/r/2013/08/14/c8adbfd0-a882-4c2c-b523-5c18114ee940/resize/770x/1a36f3c05ccd1e3cd7367b1dc64b54c1/cablemess.jpg" height="70%" width="70%"/>
+</div>
+
+<div>
+  <h1>WiFi</h1>
+  <FontAwesomeIcon icon={faWifi} size="8x" />
+</div>
+
+<div>
+  <h1>Raspberry Pi</h1>
+  <FontAwesomeIcon icon={faRaspberryPi} size="8x" />
+</div>
+
+
+---
+
+export default Horizontal
+
+<div>
+  <h1>NodeJS + Express + RPIO</h1>
+  <FontAwesomeIcon icon={faNodeJs} size="8x" />
+</div>
+
+<div>
+  <h1>HTML + CSS + JS</h1>
+  <FontAwesomeIcon icon={faCode} size="8x" />
+</div>
+
+---
+
+# Design Challenges V2
+
+<h2><FontAwesomeIcon icon={faBatteryThreeQuarters}/>   Battery Powered</h2>
+<h2><FontAwesomeIcon icon={faSketch}/>   Aesthetic</h2>
+
+---
+
+### Wifi vs. BLE
+
+---
+
+### MQTT
+
+---
+
+## Raspberry Pi Overview
+<br/>
+<FontAwesomeIcon icon={faRaspberryPi} size="10x" />
+
+---
+
+## Raspberry Pi Overview
+<br/>
+<FontAwesomeIcon icon={faRaspberryPi} size="10x" spin/>
+
+---
+export default Split
+
+<FontAwesomeIcon icon={faRaspberryPi} size="8x" />
+
+![](https://www.raspberrypi.org/app/uploads/2017/05/Raspberry-Pi-3-hero-1-1571x1080.jpg)
+
+---
+export default Split
+
+<FontAwesomeIcon icon={faRaspberryPi} size="8x" />
+
+## Configuration
+
+Traditional: Display + Keyboard + Mouse
+
+Headless: Network Config + SSH
+
+```notes
+  * SSH
+  * Network Setup
+```
+
+---
+
+Other Tasks
+
+* Flashing Raspbian - resin.io
+* Installing tools
+
+---
+
+### Espruino boards (Embedded JS)
+
+
+
+---
+
+### 3D Case Modelling
+
+- Fusion 360
+- MakerBot Print
+
+---
+
+Resources
+
+<div>
+  <FontAwesomeIcon icon={faGithub} />
+  <span> </span>
+  <a href="https://github.com/drewterry/evacuation-occupation-sensor">Github Repo</a>
+</div>

@@ -6,7 +6,7 @@ export { condensed as theme } from 'mdx-deck/themes'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRaspberryPi, faNodeJs, faGithub, faSketch, faBluetoothB } from '@fortawesome/free-brands-svg-icons'
+import { faRaspberryPi, faNodeJs, faGithub, faSketch, faBluetoothB, faJs } from '@fortawesome/free-brands-svg-icons'
 import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters, faPlus, faBed, faInfinity, faMousePointer } from '@fortawesome/free-solid-svg-icons'
 
 # Remote Sensor Monitoring and Data Distribution
@@ -262,15 +262,13 @@ export default Horizontal
 
 <div>
   <h1>(Deep) Sleep Mode</h1>
-  <span>
-    <FontAwesomeIcon icon={faBed} size="8x" />
-  </span>
+  <FontAwesomeIcon icon={faBed} size="8x" />
 </div>
 
 <div>
   <h1>Wifi vs. Bluetooth</h1>
-    <FontAwesomeIcon icon={faWifi} size="8x" />
-    <FontAwesomeIcon icon={faBluetoothB} size="8x" />
+  <FontAwesomeIcon icon={faWifi} size="8x" />
+  <FontAwesomeIcon icon={faBluetoothB} size="8x" />
 </div>
 
 ---
@@ -349,7 +347,9 @@ export default Split
 
 ---
 
-EspruinoHub
+# [EspruinoHub](https://github.com/espruino/EspruinoHub)
+
+## A BLE -> MQTT bridge for Raspberry Pi and other Embedded devices
 
 ---
 
@@ -362,7 +362,66 @@ EspruinoHub
 
 ---
 
-Code Update
+<div>
+  <h1>Code Update
+  </h1>
+  <FontAwesomeIcon icon={faJs} size="10x" />
+</div>
+
+---
+
+export default FullScreenCode
+
+```javascript
+const SENSOR = D14;
+var state = false;
+var time = getTime();
+var newTime = 0;
+var options = {
+  name: "Skookum Stall Monitor",
+  interval:1000,
+  manufacturer:0x0590
+};
+
+function setAdvertisingData(doorState, duration) {
+  options.manufacturerData = JSON.stringify({
+    l: doorState ? 1 : 0,
+    d: Math.round(duration)
+  });
+    
+  NRF.setAdvertising({
+      0x180F : [Math.round((NRF.getBattery()-2.5)/0.8*100)]
+    }, options
+  );
+}
+
+// Initialization
+
+pinMode(D14, 'input_pulldown');
+NRF.setLowPowerConnection(true);
+setAdvertisingData(!SENSOR.read(), 0);
+
+// Main
+
+setWatch(function(e) {
+  if(state !== e.state) {
+    newTime = getTime();
+
+    setAdvertisingData(!e.state, newTime - time);
+    
+    time = newTime;
+  }
+  
+  state = e.state;
+}, SENSOR, { repeat: true, edge: 'both', debounce: 1000 });
+```
+
+```notes
+NRF.setLowPowerConnection()
+setWatch()
+
+NRF.getBattery()
+```
 
 ---
 
@@ -489,45 +548,6 @@ export default Horizontal
 
 <h1><a href='https://jxnblk.com/mdx-deck'>mdx-deck</a></h1>
 
----
+# &
 
-## Raspberry Pi Second Look
-<br/>
-<FontAwesomeIcon icon={faRaspberryPi} size="10x" />
-
----
-
-<FontAwesomeIcon icon={faRaspberryPi} size="10x" spin/>
-
----
-export default Split
-
-<FontAwesomeIcon icon={faRaspberryPi} size="8x" />
-
-<div>
-  <img src='https://www.raspberrypi.org/app/uploads/2017/05/Raspberry-Pi-3-hero-1-1571x1080.jpg' width='75%' height='75%'/>
-  <Text fontSize={18}>Source: <a href='https://www.raspberrypi.org/products/raspberry-pi-3-model-b/'>https://www.raspberrypi.org/products/raspberry-pi-3-model-b/</a></Text>
-</div>
-
----
-export default Split
-
-<FontAwesomeIcon icon={faRaspberryPi} size="8x" />
-
-## Configuration
-
-Traditional: Display + Keyboard + Mouse
-
-Headless: Network Config + SSH
-
-```notes
-  * SSH
-  * Network Setup
-```
-
----
-
-Other Tasks
-
-* Flashing Raspbian - resin.io
-* Installing tools
+<h1><a href='https://rebassjs.org'>Rebass</a></h1>

@@ -1,4 +1,4 @@
-import { Split, Horizontal, Invert, SplitRight} from 'mdx-deck/layouts'
+import { Split, Horizontal, Invert, SplitRigh, FullScreenCode} from 'mdx-deck/layouts'
 import { Head, Image, Notes, Appear } from 'mdx-deck/dist'
 import { Box, Text, Card, Flex } from 'rebass'
 
@@ -7,7 +7,7 @@ export { condensed as theme } from 'mdx-deck/themes'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRaspberryPi, faNodeJs, faGithub, faSketch, faBluetoothB } from '@fortawesome/free-brands-svg-icons'
-import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters, faPlus, faBed } from '@fortawesome/free-solid-svg-icons'
+import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters, faPlus, faBed, faInfinity, faMousePointer } from '@fortawesome/free-solid-svg-icons'
 
 # Remote Sensor Monitoring and Data Distribution
 
@@ -96,6 +96,10 @@ export default Horizontal
 
 ---
 
+# IoT to the Rescue
+
+---
+
 # Design Challenges
 
 <h2><FontAwesomeIcon icon={faThermometerHalf}/>   Sensing</h2>
@@ -156,9 +160,19 @@ export default Invert
 
 ---
 
-## Raspberry Pi
-<br/>
-<FontAwesomeIcon icon={faRaspberryPi} size="10x" />
+export default Split
+
+<div>
+  <h2>Arduino</h2>
+  <br/>
+  <FontAwesomeIcon icon={faInfinity} size="10x" />
+</div>
+
+<div>
+  <h2>Raspberry Pi</h2>
+  <br/>
+  <FontAwesomeIcon icon={faRaspberryPi} size="10x" />
+</div>
 
 ---
 
@@ -187,6 +201,38 @@ export default Horizontal
   <h1>HTML + CSS + JS</h1>
   <FontAwesomeIcon icon={faCode} size="8x" />
 </div>
+
+---
+
+export default FullScreenCode
+
+```node
+const rpio = require('rpio');
+const express = require('express');
+const app = express();
+
+const STATUS_PIN = 11;
+
+app.use(express.static('public'))
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/stall', (req, res) => {
+  const status = Boolean(rpio.read(STATUS_PIN));
+  console.log(`${req.connection.remoteAddress} // Status: ${status}`);
+  res.send({occupied: status});
+});
+
+rpio.open(STATUS_PIN, rpio.INPUT);
+
+app.listen(3000, () => {
+  console.log('stall-monitor is "Watching the Stall"');
+}); 
+```
 
 ---
 
@@ -287,6 +333,7 @@ export default Split
 - Puck (BLE + Housing + Sensors)
 - Pixl (BLE + Screen)
 - Wifi
+- IDE
 
 ---
 
@@ -302,6 +349,10 @@ export default Split
 
 ---
 
+EspruinoHub
+
+---
+
 # MQTT
 
 - Popular IoT transport protocol
@@ -311,26 +362,132 @@ export default Split
 
 ---
 
+Code Update
+
+---
+
 # Client Update
 
 ![](doc/client.png)
 
 ---
 
-### 3D Case Modelling
+export default FullScreenCode
 
-- Fusion 360
-- MakerBot Print
+```javascript
+const http = new XMLHttpRequest();
+const url = "http://10.1.5.135:3000/stall";
+
+function setBathroomStatus(occupied) {
+  document.getElementById('toilet').style.display = 'block';
+  document.getElementById('occupied').style.display = occupied ? 'block' : 'none';
+  document.getElementById('vacant').style.display = occupied ? 'none' : 'block';
+};
+
+function log(msg) {
+  document.getElementById('log').textContent = msg;
+}
+    
+// Create a client instance
+client = new Paho.MQTT.Client(
+  location.hostname||"10.1.5.121",
+  parseInt(location.port||1888),
+  location.pathname.substr(0,location.pathname.lastIndexOf("/")+1),
+  Math.random().toString(36).substring(7)
+);
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+log("MQTT Connecting...");
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+// called when the client connects
+function onConnect() {
+log("MQTT Connected");
+  client.subscribe("#"); // get everything
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    document.getElementById('toilet').style.display = 'none';
+    log("MQTT connection lost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  log(""+message.destinationName+"  ->  "+JSON.stringify(message.payloadString));
+  if (message.destinationName.startsWith("/ble/advertise/stall-monitor-men/l")) {
+    // console.log(message.destinationName, ": ", message.payloadString);
+    setBathroomStatus(message.payloadString === "1");
+  }
+}
+```
 
 ---
 
-Resources
+export default Horizontal
 
 <div>
+  <h1>3D Case Printing</h1>
+  <hr/>
+  <h1>Fusion 360</h1>
+</div>
+
+<img src='doc/fusion1.png' width='75%' height='75%' />
+
+<img src='doc/fusion2.png' width='75%' height='75%' />
+
+---
+
+export default Horizontal
+
+<div>
+  <h1>3D Case Printing</h1>
+  <hr/>
+  <h1>Makerbot Print</h1>
+</div>
+
+<img src='doc/makerbot.png' width='75%' height='75%' />
+
+<img src='doc/final_print.png' width='75%' height='75%' />
+
+---
+
+# Be agile they said,
+# iterate they said
+
+<img src='doc/old_prints.png' width='75%' height='75%' />
+
+---
+
+# Final Product
+
+<img src='doc/installed.png' width='75%' height='75%' />
+
+---
+
+<h1>
+  <FontAwesomeIcon icon={faMousePointer} />
+  <span> </span>
+  <a href="">Stall Monitor</a>
+</h1>
+
+<h1>
   <FontAwesomeIcon icon={faGithub} />
   <span> </span>
   <a href="https://github.com/drewterry/evacuation-occupation-sensor">Github Repo</a>
-</div>
+</h1>
+
+---
+
+### This presentation was built with:
+
+<h1><a href='https://jxnblk.com/mdx-deck'>mdx-deck</a></h1>
 
 ---
 

@@ -1,5 +1,5 @@
 import { Split, Horizontal, Invert, SplitRigh, FullScreenCode} from 'mdx-deck/layouts'
-import { Head, Image, Notes, Appear } from 'mdx-deck/dist'
+import { Head, Image } from 'mdx-deck/dist'
 import { Box, Text, Card, Flex } from 'rebass'
 
 export { condensed as theme } from 'mdx-deck/themes'
@@ -134,9 +134,13 @@ What about ...
 <s>Door Position?</s>
 <h2>Lock Position!</h2>
 
-<Appear>
-  <h2>Because who doesn't lock the door??</h2>
-</Appear>
+---
+
+What about ...
+
+<s>Door Position?</s>
+<h2>Lock Position!</h2>
+<h2>Because who doesn't lock the door??</h2>
 
 ---
 
@@ -303,13 +307,11 @@ export default Split
   <h4> Worth Mentioning: nRF91</h4>
 </Box>
 
-<Notes>
-  ESP8266 - Wifi, GPIO, ADC/DAC, Protocols
+```notes  ESP8266 - Wifi, GPIO, ADC/DAC, Protocols
   ESP32 - Wifi, Bluetooth 4, Encryption, ADC/DAC, GPIO, Protocols
   nRF51/52 - Bluetooth 5, NFC, Encryption, ADC/DAC, GPIO, Protocols (SPI. I2C, I2S, UART, 2 wire, more!)
   nRF91 - Cellular!!
-</Notes>
-
+```
 ---
 
 export default Split

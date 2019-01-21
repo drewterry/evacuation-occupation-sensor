@@ -6,8 +6,8 @@ export { condensed as theme } from 'mdx-deck/themes'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRaspberryPi, faNodeJs, faGithub, faSketch } from '@fortawesome/free-brands-svg-icons'
-import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { faRaspberryPi, faNodeJs, faGithub, faSketch, faBluetoothB } from '@fortawesome/free-brands-svg-icons'
+import { faRunning, faToilet, faThermometerHalf, faMobileAlt, faWifi, faUndo, faCode, faBatteryThreeQuarters, faPlus, faBed } from '@fortawesome/free-solid-svg-icons'
 
 # Remote Sensor Monitoring and Data Distribution
 
@@ -147,6 +147,9 @@ export default Invert
   <img src="https://cdn-learn.adafruit.com/assets/assets/000/000/492/original/force___flex_tiltcutaway.jpg?1396763538" height="50%" width="50%"/>
 </Flex>
 
+<Text fontSize={18}>Source: <a href='http://blog.vidianindhita.com/2018/02/27/all-about-tilt-switches/'>http://blog.vidianindhita.com/2018/02/27/all-about-tilt-switches/</a></Text>
+<Text fontSize={18}>Source: <a href='https://learn.adafruit.com/tilt-sensor/overview'>https://learn.adafruit.com/tilt-sensor/overview</a></Text>
+
 ---
 
 # Data Acquisition and Presentation
@@ -189,24 +192,113 @@ export default Horizontal
 
 # Final Product
 <br/>
-<img src="https://tr4.cbsistatic.com/hub/i/r/2013/08/14/c8adbfd0-a882-4c2c-b523-5c18114ee940/resize/770x/1a36f3c05ccd1e3cd7367b1dc64b54c1/cablemess.jpg" />
+<img src="http://www.se.edu/staff/cwood/files/2011/11/datacenter-rewire1.jpg" />
 <br/>
-<small>*Artist Rendering.  Sadly no pictures remain of this monstrosity.</small>
-
+<Text fontSize={18}>
+  *Artist Rendering.  Sadly no pictures remain of this monstrosity.
+  <br/>
+  Source: <a href='http://www.se.edu/staff/cwood/2011/11/09/datacenter-remodel-complete/'>http://www.se.edu/staff/cwood/2011/11/09/datacenter-remodel-complete/</a>
+</Text>
 ---
 
 # Design Challenges V2
 
-<h2><FontAwesomeIcon icon={faBatteryThreeQuarters}/>   Battery Powered</h2>
+<h2><FontAwesomeIcon icon={faBatteryThreeQuarters}/>   Battery</h2>
+<h2><FontAwesomeIcon icon={faPlus}/>   Performance / Stability</h2>
 <h2><FontAwesomeIcon icon={faSketch}/>   Aesthetic</h2>
 
 ---
 
-# Wifi vs. BLE
+# Battery = Low Power
+
+---
+export default Horizontal
+
+<div>
+  <h1>(Deep) Sleep Mode</h1>
+  <span>
+    <FontAwesomeIcon icon={faBed} size="8x" />
+  </span>
+</div>
+
+<div>
+  <h1>Wifi vs. Bluetooth</h1>
+    <FontAwesomeIcon icon={faWifi} size="8x" />
+    <FontAwesomeIcon icon={faBluetoothB} size="8x" />
+</div>
+
+---
 
 
+## Power Management
+<br/>
+
+![](https://www.electronicdesign.com/sites/electronicdesign.com/files/0517SilLabs_Fig2.png)
+
+<Text fontSize={18}>
+  Source: <a href='https://www.electronicdesign.com/embedded-revolution/sleep-sense-connect-low-power-iot-design'>https://www.electronicdesign.com/embedded-revolution/sleep-sense-connect-low-power-iot-design</a>
+</Text>
+
+---
+
+export default Split
+
+# Embedded Controllers
+
+<Box m={50}>
+  <h1>Espressif</h1>
+  <hr/>
+  <h2>ESP8266</h2>
+  <h2>ESP32</h2>
+</Box>
+<br/>
+<Box m={50}>
+  <h1>Nordic</h1>
+  <hr/>
+  <h2>nRF51/52</h2>
+  <h4> Worth Mentioning: nRF91</h4>
+</Box>
+
+<Notes>
+  ESP8266 - Wifi, GPIO, ADC/DAC, Protocols
+  ESP32 - Wifi, Bluetooth 4, Encryption, ADC/DAC, GPIO, Protocols
+  nRF51/52 - Bluetooth 5, NFC, Encryption, ADC/DAC, GPIO, Protocols (SPI. I2C, I2S, UART, 2 wire, more!)
+  nRF91 - Cellular!!
+</Notes>
+
+---
+
+export default Split
 
 
+<div>
+  <h1>Espruino</h1>
+  <h1>Embedded Boards that run JS!</h1>
+</div>
+
+![](https://www.espruino.com/refimages/MDBT42Q_board.jpg)
+
+<Text fontSize={18}>
+  Source: <a href='https://www.espruino.com/MDBT42Q'>https://www.espruino.com/MDBT42Q</a>
+</Text>
+
+- MDBT42Q (BLE)
+- Pico (Tiny)
+- Puck (BLE + Housing + Sensors)
+- Pixl (BLE + Screen)
+- Wifi
+
+---
+
+export default Split
+
+# System Architecture
+
+![](doc/whiteboard.jpg)
+
+---
+
+# Performance = No Polling
 
 ---
 
@@ -216,20 +308,6 @@ export default Horizontal
 - Bi-directional Publish-Subscribe
 - Optimized for low power, small packets, reliability
 - Channels for status, battery, previous state duration
-
----
-
-### Espruino boards (Embedded JS)
-
-
-
----
-
-export default Split
-
-# System Architecture
-
-![](doc/whiteboard.jpg)
 
 ---
 
@@ -269,7 +347,10 @@ export default Split
 
 <FontAwesomeIcon icon={faRaspberryPi} size="8x" />
 
-![](https://www.raspberrypi.org/app/uploads/2017/05/Raspberry-Pi-3-hero-1-1571x1080.jpg)
+<div>
+  <img src='https://www.raspberrypi.org/app/uploads/2017/05/Raspberry-Pi-3-hero-1-1571x1080.jpg' width='75%' height='75%'/>
+  <Text fontSize={18}>Source: <a href='https://www.raspberrypi.org/products/raspberry-pi-3-model-b/'>https://www.raspberrypi.org/products/raspberry-pi-3-model-b/</a></Text>
+</div>
 
 ---
 export default Split
